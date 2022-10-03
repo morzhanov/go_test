@@ -2,7 +2,7 @@ metadata:
   generateName: pipeline2
   namespace: argo
   labels:
-    clusterName: hubcluster
+    clusterName: cluster2
 spec:
   entrypoint: starter
   arguments:

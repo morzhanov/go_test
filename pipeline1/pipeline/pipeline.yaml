@@ -2,7 +2,7 @@ metadata:
   generateName: argocd-testapp-successes-
   namespace: argo
   labels:
-    clusterName: hubcluster
+    clusterName: cluster2
 spec:
   entrypoint: starter
   arguments:
