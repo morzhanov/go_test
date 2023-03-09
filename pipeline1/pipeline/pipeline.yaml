@@ -9,10 +9,6 @@ spec:
     parameters:
       - name: example
         value: example
-      - name: application-name-dev
-        value: testapp-dev
-      - name: application-name-stag
-        value: testapp-staging
       - name: revision
         value: main
       - name: argocd-server-address

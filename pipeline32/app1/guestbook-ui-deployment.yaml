@@ -1,21 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: testapp
+    name: testapp
+    namespace: pipeline32-namespace1
 spec:
-  replicas: 1
-  revisionHistoryLimit: 3
-  selector:
-    matchLabels:
-      app: testapp
-  template:
-    metadata:
-      labels:
-        app: testapp
-    spec:
-      containers:
-      - image: argoproj/rollouts-demo:blue
-        name: testapp
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 5000
+    replicas: 1
+    revisionHistoryLimit: 3
+    selector:
+        matchLabels:
+            app: testapp
+    template:
+        metadata:
+            labels:
+                app: testapp
+        spec:
+            containers:
+                - image: argoproj/rollouts-demo:blue
+                  imagePullPolicy: IfNotPresent
+                  name: testapp
+                  ports:
+                    - containerPort: 5000

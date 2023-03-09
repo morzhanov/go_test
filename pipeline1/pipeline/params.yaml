@@ -1,9 +1,9 @@
 arguments:
   parameters:
     - name: application-name-dev
-      value: testapp-dev
+      value: pipeline1-app1
     - name: application-name-stag
-      value: testapp-staging
+      value: pipeline1-app2
     - name: revision
       value: main
     - name: argocd-server-address
