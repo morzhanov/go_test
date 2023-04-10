@@ -1,12 +1,12 @@
 arguments:
     parameters:
-        - name: application-name-dev
-          value: pipeline37-app1
-        - name: application-name-stag
-          value: pipeline37-app2
+        - name: application-name
+          value: pipeline1-app1
+        - name: application-name-2
+          value: pipeline1-app2
         - name: revision
-          value: main
+          value: HEAD
         - name: argocd-server-address
-          value: argocd-server.argocd.svc.cluster.local
+          value: demoargocd.greenops.io
         - name: argocd-credentials-secret
-          value: argocd-user
+          value: argocd-credentials-secret

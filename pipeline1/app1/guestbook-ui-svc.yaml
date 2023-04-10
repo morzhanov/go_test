@@ -1,21 +1,11 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
-  name: testapp
+  name: guestbook-ui
+  namespace: pipeline1-namespace1
 spec:
-  replicas: 1
-  revisionHistoryLimit: 3
+  ports:
+  - port: 80
+    targetPort: 80
   selector:
-    matchLabels:
-      app: testapp
-  template:
-    metadata:
-      labels:
-        app: testapp
-    spec:
-      containers:
-      - image: argoproj/rollouts-demo:blue
-        name: testapp
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 5000
+    app: guestbook-ui

@@ -1,32 +1,45 @@
 metadata:
     generateName: pipeline31
     labels:
-        clusterName: cluster2
+        clusterName: hubcluster
     namespace: argo
 spec:
-    arguments:
-        parameters:
-            - name: example
-              value: example
-            - name: revision
-              value: main
-            - name: argocd-server-address
-              value: argocd-server.argocd.svc.cluster.local
-            - name: argocd-credentials-secret
-              value: argocd-user
     entrypoint: starter
     templates:
+        - container:
+            args:
+                - hello world
+            command:
+                - cowsay
+            image: docker/whalesay
+          name: whalesay
         - name: starter
           steps:
             - - arguments:
                     parameters:
                         - name: application-name
-                          value: '{{workflow.parameters.application-name-dev}}'
+                          value: '{{workflow.parameters.application-name}}'
                         - name: revision
                           value: '{{workflow.parameters.revision}}'
                         - name: argocd-server-address
                           value: '{{workflow.parameters.argocd-server-address}}'
-                name: deploy-to-dev-successes1
+                name: argocd-app1
                 templateRef:
                     name: argocd-step
                     template: argocd-sync-and-wait
+            - - name: first-dummy-step
+                template: whalesay
+            - - arguments:
+                    parameters:
+                        - name: application-name
+                          value: '{{workflow.parameters.application-name-2}}'
+                        - name: revision
+                          value: '{{workflow.parameters.revision}}'
+                        - name: argocd-server-address
+                          value: '{{workflow.parameters.argocd-server-address}}'
+                name: argocd-app2
+                templateRef:
+                    name: argocd-step
+                    template: argocd-sync-and-wait
+            - - name: second-dummy-step
+                template: whalesay
